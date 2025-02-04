@@ -1,0 +1,83 @@
+[
+    {
+        "id": "blackjack",
+        "title": "BlackJack",
+        "description": "Blackjack, also known as twenty-one, is by far the most popular casino card game. Despite its simple rules, it boasts high winning chances and a great deal of excitement. BGaming presents its own version of this classic card game. The subtle tones, smooth card, chip animations, and relaxing music make the go-to card game for all blackjack aficionados. Make sure to experience it right now!",
+        "image": "https://cdn.prod.website-files.com/63b3249466615535f76d4b4e/6695351f66447192b4939ef8_Multihand_Blackjack_1020x1280-p-800.webp",
+        "author": "BGaming",
+        "iframeSrc": "/gs/blackjack.html"
+    },
+    {
+        "id": "cookie-clicker",
+        "title": "Cookie Clicker",
+        "description": "Cookie Clicker is an incremental web-browser game developed by Orteil. The goal of the game is to produce as many cookies (by clicking on the Big Cookie and buying buildings to produce them) as you can. There is no end to the game, but some believe getting all the achievements is technically seen as finishing the game.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcT7egU5dpP1-luv5b5uScSPoVWkfLX8Q8Hg&s",
+        "author": "Orteil",
+        "iframeSrc": "/gs/cookie-clicker/index.html"
+    },
+    {
+        "id": "doge-miner",
+        "title": "Doge Miner",
+        "description": "Doge Miner is an awesome incremental game featuring everyone’s favorite shibe inu pup. It is an idle game inspired by Cookie Clicker where the goal of the game is to click your way to the moon! 🚀",
+        "image": "https://www.dolldivine.com/images/doge-coin-miner-game.png",
+        "author": "rkn",
+        "iframeSrc": "/gs/doge-miner/index.html"
+    },
+    {
+        "id": "drift-hunters",
+        "title": "Drift Hunters",
+        "description": "Drift Hunters is an exciting online car drifting game that lets players explore their drifting skills across various tracks. In Drift Hunters, you can customize your car, upgrade its performance, and select from a wide range of vehicles to create the ultimate drift machine. The goal is to perform as many drifts as possible, earning points that can be used to unlock new cars and upgrades. By mastering the controls and perfecting your drifting techniques, you can achieve higher scores and explore different levels within the game. Drift Hunters offers a realistic experience with detailed car physics and responsive handling, making it an engaging game for car enthusiasts and drifting fans alike.",
+        "image": "https://www.offidocs.com/images/drifthuntersunblockedgame.jpg",
+        "author": "Ilya Kaminetsky",
+        "iframeSrc": "/gs/drift-hunters.html"
+    },
+    {
+        "id": "idle-breakout",
+        "title": "Idle Breakout",
+        "description": "Idle Breakout is a brick breaking idle game where you must unlock and upgrades different types of balls which will destroy the bricks on your behalf! Begin the game by clicking on the bricks and then once you have enough money, you can start unleashing the balls on the bricks! There are tons of upgrades and balls like extra power in your clicks or poison balls which infect other bricks to deal double damage. Can you breakout?",
+        "image": "https://play-lh.googleusercontent.com/e5jzYTn7Mjh9Ghn-DFpVedkOlRfSOyCS2AFgXdTrADIuuUbjx6vP6r_YOM2j5m7uLQ",
+        "author": "Kodiqi",
+        "iframeSrc": "/gs/idle-breakout.html"
+    },
+    {
+        "id": "plinko",
+        "title": "Plinko",
+        "description": "Plinko has emerged as a favorite in the online gaming world, captivating players with its unique gameplay and engaging variations available across numerous platforms. Whether you’re a seasoned online casino enthusiast or a newcomer exploring the digital gambling space, this comprehensive guide will equip you with everything you need to dive into Plinko. From mastering the basics to setting clear objectives for your gaming sessions, this guide is designed to enhance your experience and help you make the most of every round.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXhzelOjUZjbCre_z5KUOO_S5Oh3ehZPyz0g&s",
+        "author": "BGaming",
+        "iframeSrc": "/gs/plinko.html"
+    },
+    {
+        "id": "polytrack",
+        "title": "Polytrack",
+        "description": "PolyTrack is a low-poly racing game with loops, jumps and high speeds, where every millisecond counts. The game is heavily inspired by TrackMania, where you race against the clock to improve your time on different tracks. The game includes a level editor where you can create tracks, which you can then export and share with others.",
+        "image": "https://www2.minijuegosgratis.com/v3/games/thumbnails/245571_7_sq.jpg",
+        "author": "Kodub",
+        "iframeSrc": "/gs/polytrack.html"
+    },
+    {
+        "id": "roulette",
+        "title": "Roulette",
+        "description": "Roulette is an exciting casino game where players place bets on where a small ball will land on a spinning wheel. The wheel is divided into numbered pockets, typically ranging from 0 to 36, with red and black colors alternating between them. Players can bet on a single number, a group of numbers, or even on whether the ball will land on red or black. Once the bets are placed, the wheel is spun, and the ball rolls around before settling in one of the pockets, determining the winner. It’s a game of chance, offering endless thrills with every spin!",
+        "image": "https://play-lh.googleusercontent.com/bA_QwOyQZOXMIrlOS7RNtT3E87ZGNbQdm-9TSVyDAS7e7dhSsKzostr3UHMzG4DsCxY=s256-rw",
+        "author": "BGaming",
+        "iframeSrc": "/gs/roulette.html"
+    },
+    {
+        "id": "slope",
+        "title": "Slope",
+        "description": "Slope game is a speed run game that is about rolling the ball down an endless journey. What's waiting for you? Endless slopes, challenging obstacles, increasing speed, and a constantly changing environment! It is set in the galaxy. And besides the addictive gameplay, it also has vibrant 3D graphics and exciting background music!",
+        "image": "https://slopeonline.online/upload/imgs/options/slope-game-logo.png",
+        "author": "Rob Kay",
+        "iframeSrc": "/gs/slope/index.html"
+    },
+    {
+        "id": "",
+        "title": "",
+        "description": "",
+        "image": "",
+        "author": "",
+        "iframeSrc": "/gs/"
+    }
+  ]
+  

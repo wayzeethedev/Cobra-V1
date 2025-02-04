@@ -1,0 +1,17 @@
+{
+    "videos": [
+      {
+        "src": "/Snapinsta.app_video_AQNFGvxp8V68rxjp_03X7dDoO-DrI-_E-rJc2T19zp4K2e252u4aeQGKduOuc-MlfiDued7jdlTNf3zdjg84NnK7qlbWGp9qT5xoEdI.mp4",
+        "title": "Video 1"
+      },
+      {
+        "src": "/assets/videos/video2.mp4",
+        "title": "Video 2"
+      },
+      {
+        "src": "/assets/videos/video3.mp4",
+        "title": "Video 3"
+      }
+    ]
+  }
+  

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ten Cuidado | Community ICE Sightings</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6TCV8PT4SQ"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-6TCV8PT4SQ');
+    </script>
+    <style>
+        body {
+            background-color: #1a1a5e;
+            font-family: 'Noto Sans', sans-serif;
+            font-weight: bold;
+            color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh; /* Full viewport height */
+        }
+        .header {
+            height: 70px;
+            left: 0;
+            width: 100%;
+            background-color: #1a1a5e;
+            top: 0;
+            position: fixed;
+            z-index: 9998;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .header-title {
+            color: #f7f7f7;
+            font-size: 26px;
+        }
+        .header-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 9999;
+            transition: background-color 0.3s ease;
+            margin-right: 35px;
+        }
+        .header-button:hover {
+            background-color: #45a049;
+        }
+        .sidebar {
+            width: 390px;
+            height: calc(100% - 70px);
+            bottom: 0;
+            right: 0;
+            position: fixed;
+            background-color: #1a1a5e;
+            overflow-y: auto; /* Vertical scrolling allowed */
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .sidebar::-webkit-scrollbar {
+            width: 12px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        .sidebar::-webkit-scrollbar {
+            width: 12px;
+        }
+        .sidebar.scrollbar-visible {
+            width: 400px;
+        }
+        .sidebar-inside-container {
+            position: relative;
+            margin-top: 15px;
+            margin-left: 50%;
+            width: 320px;
+            height: auto;
+            transform: translateX(-50%);
+            background-color: #3b3b8d;
+            border-radius: 15px;
+            padding-top: 5px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 15px;
+        }
+        .sidebar-inside-container h1 {
+            font-size: 21px;
+            text-align: left;
+            color: #f7f7f7;
+        }
+        .form-actions {
+            margin-top: 10px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .zip-code-input {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            width: 70%;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        .form-actions button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ff7f50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .form-actions select {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #ff7f50;
+            color: white;
+            margin-left: 10px;
+        }
+        .form-actions button:hover {
+            background-color: #ff6347;
+        }
+        .form-actions select:hover {
+            background-color: #e85c48;
+        }
+        .report-container {
+            margin-top: 20px;
+            background-color: #e85c48;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            height: auto;
+            padding-top: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-bottom: 5px; 
+            position: relative; /* Make sure the image can be positioned relative to the container */
+        }
+        .report-container h1 {
+            font-size: 20px;
+            text-align: left;
+            color: #f7f7f7;
+            max-width: 150px;
+        }
+        .report-container h2 {
+            font-size: 14px;
+            text-align: left;
+            color: #f7f7f7;
+            margin-top: -10px;
+            max-width: 150px;
+        }
+        .report-container p {
+            font-size: 12px;
+            text-align: left;
+            color: #f7f7f7;
+            margin-top: 10px;
+        }
+        .report-container img {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: auto;
+            max-width: 150px;
+            height: 60px;
+            cursor: pointer;
+        }
+        .space {
+            position: relative;
+            margin-top: 0px;
+            margin-left: 50%;
+            height: 20px;
+            width: 320px;
+            transform: translateX(-50%);
+            background-color: transparent;
+        }
+        #map {
+            width: calc(100% - 390px);
+            height: calc(100vh - 70px);
+            margin-top: 70px;
+            z-index: 5;
+            margin-left: 0;
+            border-radius: 0 15px 0 0;
+        }
+        .loading-spinner {
+            position: relative;
+            top: 5px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 5px solid #f3f3f3; /* Light grey */
+            border-top: 5px solid #ff7f50; /* Orange color for the spinner */
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        .loading-spinner.hidden {
+            display: none;
+        }
+        /* Popup Overlay */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Popup Container */
+        .popup-container {
+            position: relative;
+            background-color: black;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        /* Close Button (X) */
+        .close-popup {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Large Image Styling */
+        .popup-container img {
+            max-width: 100%;
+            max-height: 80vh; /* Restrict the height so it fits within the viewport */
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-title">Ten Cuidado</div>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScFxO6AUHJQMK3hJ7DEj3oKATSWl9Qc52so9eOsCp_oH9qBxw/viewform" target="_blank">
+            <button class="header-button">Submit a Report</button>
+        </a>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-inside-container">
+            <h1>Reports</h1>
+            <div id="reports-container">
+                <div id="loading-spinner" class="loading-spinner"></div>
+            </div>
+        </div>
+        <div class="space"></div>
+    </div>
+    <div id="map"></div> 
+        <script>
+            var map = L.map('map').setView([38.8978, -77.0364], 13); // Initialize map centered at Washington, D.C.
+        
+            // Add OpenStreetMap tile layer
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+        </script>    
+        <script>
+            fetch('https://script.googleusercontent.com/macros/echo?user_content_key=Y3HrGxLFRyE0vgmQngamsTkV5hY9tFISshmgfMTZKJWwhNXeBFrDauTYBY3H2AhXxunGb8jFx5o4Leg1T1xJ6Qs86j1aJ8Izm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnAo-OMHM9IGXQFklwY4yqFanvonAeTv4ln1BqKoBfM2yDmohRtDkiGle52zoGrPHXUCga2ojluVsbXvy09WpAerAYHrZ9SpAog&lib=MRdnB1AiqEPUp-SVT5zEKJ1mvmH1sd9Lq')
+    .then(response => response.json())
+    .then(data => {
+        // Get the reports container element and hide the spinner
+        const reportsContainer = document.getElementById('reports-container');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        // Hide the loading spinner once data is loaded
+        loadingSpinner.classList.add('hidden');
+        
+        // Clear previous reports (in case there's any)
+        reportsContainer.innerHTML = '';
+
+        // Check if there are any reports in the data
+        if (data.length === 0) {
+            // If no reports, show the "No reports found" message
+            const noReportsMessage = document.createElement('p');
+            noReportsMessage.textContent = 'No reports found.';
+            noReportsMessage.style.color = '#f7f7f7'; // Make sure the text is visible
+            reportsContainer.appendChild(noReportsMessage);
+        } else {
+            // Loop through each report in the data
+            data.forEach(report => {
+                // Create the individual report container
+                const reportDiv = document.createElement('div');
+                reportDiv.classList.add('report-container');
+                
+                // Create the h1 (City)
+                const cityH1 = document.createElement('h1');
+                cityH1.textContent = report.City;
+                
+                // Create the h2 (Timestamp)
+                const timestampH2 = document.createElement('h2');
+                const timestamp = new Date(report.Timestamp);
+                timestampH2.textContent = `${timestamp.toLocaleDateString()} ${timestamp.toLocaleTimeString()}`;
+                
+                // Create the img (Picture) - check if there's a Picture URL
+                const reportImg = document.createElement('img');
+                if (report.Picture) {
+                    // Modify the Picture URL to use the thumbnail version
+                    const pictureUrl = report.Picture.replace('https://drive.google.com/open?id=', 'https://drive.google.com/thumbnail?id=');
+                    reportImg.src = pictureUrl; // Use the modified URL
+                    reportImg.alt = 'Report Image';
+
+                    // Add a click event to open the image in a larger popup
+                    reportImg.addEventListener('click', function() {
+                        openImagePopup(report.Picture); // Pass the original image URL for the large version
+                    });
+                }
+                
+                // Create the p (Comment)
+                const commentP = document.createElement('p');
+                commentP.textContent = report.Comment || 'No comment available.';
+                
+                // Append all elements to the reportDiv
+                reportDiv.appendChild(cityH1);
+                reportDiv.appendChild(timestampH2);
+                reportDiv.appendChild(reportImg);
+                reportDiv.appendChild(commentP);
+                
+                // Append the reportDiv to the reports container
+                reportsContainer.appendChild(reportDiv);
+
+                // Check if the report has a full address and add the circle to the map
+                if (report['Full Address']) {
+                    geocodeAndAddCircle(report['Full Address']); // Geocode and add circle for this report's address
+                }
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching the JSON data:', error);
+        // Hide the spinner in case of an error
+        const loadingSpinner = document.getElementById('loading-spinner');
+        loadingSpinner.classList.add('hidden');
+
+        // Show an error message
+        const reportsContainer = document.getElementById('reports-container');
+        const errorMessage = document.createElement('p');
+        errorMessage.textContent = 'Error fetching reports. Please try again later.';
+        errorMessage.style.color = '#f7f7f7'; // Make sure the text is visible
+        reportsContainer.appendChild(errorMessage);
+    });
+
+function geocodeAndAddCircle(address) {
+    // Nominatim API URL (Geocoding API from OpenStreetMap)
+    const geocodeUrl = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}&addressdetails=1`;
+
+    // Fetch the geocode data
+    fetch(geocodeUrl)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                // Get the first result from the geocode data
+                const lat = parseFloat(data[0].lat);
+                const lon = parseFloat(data[0].lon);
+
+                // Add a circle on the map for the given coordinates
+                L.circle([lat, lon], {
+                    color: 'red',  // Circle color
+                    fillColor: '#ff6347',  // Fill color
+                    fillOpacity: 0.3,  // Fill opacity
+                    radius: 804.67  // Radius in meters (0.5 miles)
+                }).addTo(map)
+                .bindPopup(`<b>${address}</b><br>Radius: 0.5 mi`)
+                .openPopup();
+            } else {
+                console.error('Geocoding failed for address:', address);
+            }
+        })
+        .catch(error => {
+            console.error('Error geocoding address:', address, error);
+        });
+}
+        </script>   
+</body>
+</html>

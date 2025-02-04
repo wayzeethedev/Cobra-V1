@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="/assets/css/global.css" rel="stylesheet">
+    <script src="/assets/js/global.js" type="module"></script>
+    <style>
+        .content {
+            display: flex;
+            gap: 30px;
+            margin-top: 100px;
+            align-items: flex-start;
+        }
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .content img {
+            height: 250px;
+            width: 250px;
+            margin-left: 30px;
+            border-radius: 25px;
+            object-fit: cover;
+        }
+        .description-title {
+            font-size: 24px;
+            margin-top: 15px;
+            margin-left: 30px;
+        }
+        .description {
+            position: absolute;
+            font-size: 16px;
+            padding: 305px 30px 0px 30px;
+            width: auto;
+            flex-grow: 1;
+        }
+        .text-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            width: 450px;
+            flex-grow: 0;
+        }
+        .game-title {
+            font-size: 40px;
+        }
+        .author {
+            font-size: 20px;
+        }
+        .visits {
+            font-size: 16px;
+            margin-top: 25px;
+        }
+        .play-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 75px;
+            border-radius: 12px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-top: 25px;
+        }
+        .play-button:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        @media (max-width: 600px) {
+            .content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .image-container {
+                align-items: center;
+            }
+            .content img {
+                margin-left: 0;
+                transform: translateX(0);
+            }
+            .description {
+                margin-left: 0;
+                text-align: center;
+                width: auto;
+            }
+            .description {
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="header">
+        <a href="/">
+            <img src="/assets/images/logo.png">
+        </a>
+        <div class="nav-links" id="nav-links"></div>
+    </nav>   
+    <div class="content">
+        <div class="image-container">
+            <img id="game-image" src="" alt="Game Image">
+            <div class="description-title">Description</div>
+            <div id="game-description" class="description">Loading...</div>
+        </div>
+        <div class="text-content">
+            <div id="game-title" class="game-title">Loading...</div>
+            <div id="game-author" class="author">By: <span id="author-name">Loading...</span></div>
+            <button class="play-button" id="play-button">Play</button>
+        </div>
+    </div>
+
+    <script>
+        fetch('/assets/json/games.json')
+            .then(response => response.json())
+            .then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const gameId = urlParams.get('id');
+                if (gameId) {
+                    const game = data.find(game => game.id === gameId);
+                    if (game) {
+                        document.getElementById('game-title').innerText = game.title;
+                        document.getElementById('game-description').innerText = game.description;
+                        document.getElementById('game-image').src = game.image;
+                        document.getElementById('author-name').innerText = game.author;
+
+                        // Set play button URL dynamically
+                        const playButton = document.getElementById('play-button');
+                        playButton.onclick = function () {
+                            window.location.href = `/play.html?id=${gameId}`;
+                        };
+                    } else {
+                        document.getElementById('game-title').innerText = "Game not found";
+                        document.getElementById('game-description').innerText = "Sorry, this game could not be found.";
+                    }
+                } else {
+                    document.getElementById('game-title').innerText = "Game not found";
+                    document.getElementById('game-description').innerText = "Please provide a valid game id in the URL.";
+                }
+            });
+    </script>
+</body>
+</html>

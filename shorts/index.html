@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+    <link href="/assets/css/global.css" rel="stylesheet">
+    <script src="/assets/js/global.js" type="module"></script>
+</head>
+<style>
+    body {
+        font-family: "Oswald", serif;
+        margin: 0;
+        padding: 0;
+    }
+    .header {
+        width: 250px;
+        height: 100%;
+        justify-content: normal;
+        align-items: normal;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .header img {
+        width: auto;
+        height: 60px;
+        position: relative;
+        padding-right: 20px;
+        margin-top: 10px;
+    }
+    .header h1 {
+        font-size: 24px;
+        color: white;
+        font-weight: bold;
+        margin-top: 28px;
+    }
+    .line {
+        height: 30px;
+        width: 2px;
+        background-color: #ff3131;
+        margin-right: 15px;
+        margin-top: 32px;
+    }
+    video {
+        position: absolute;
+        top: 50%;
+        left: calc(50% + 125px);
+        transform: translate(-50%, -50%);
+        height: 98%;
+        object-fit: contain;
+        border-radius: 15px;
+        width: auto;
+        max-width: calc(100% - 280px);
+        cursor: pointer;
+    }
+    @media (max-width: 1280px) {
+        video {
+            width: 100%;
+            height: auto;
+            max-width: calc(100% - 280px);
+            max-height: 98%;
+        }
+    }
+</style>
+<body>
+    <div class="header">
+        <a href="/">
+            <img src="/assets/images/logo.png">
+        </a>
+        <div class="line"></div>
+        <h1>Shorts</h1>
+    </div>   
+    <video id="video" autoplay loop>
+        <source id="video-source" src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const videoList = [
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/SubaruOutbackOnStreetAndDirt.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4",
+    "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WhatCarCanYouGetForAGrand.mp4"
+];
+
+let currentIndex = 0;
+let videoCount = 0;
+let showingAd = false;
+const videoElement = document.getElementById("video");
+const sourceElement = document.getElementById("video-source");
+
+// Create Ad Container (acts as a fake "video")
+const adContainer = document.createElement("div");
+adContainer.classList.add("ad-container");
+adContainer.style.position = "absolute";
+adContainer.style.top = "50%";
+adContainer.style.left = "calc(50% + 125px)";
+adContainer.style.transform = "translate(-50%, -50%)";
+adContainer.style.width = "300px";
+adContainer.style.height = "250px";
+adContainer.style.backgroundColor = "gray";
+adContainer.style.display = "none";
+adContainer.style.alignItems = "center";
+adContainer.style.justifyContent = "center";
+
+// Insert the ad script dynamically inside the ad container
+function loadAd() {
+    adContainer.innerHTML = ""; // Clear previous ad content
+    let adScript1 = document.createElement("script");
+    adScript1.type = "text/javascript";
+    adScript1.innerHTML = `
+        atOptions = {
+            'key' : '4c9b8144b1d68e87a8da4df06bcf9b9b',
+            'format' : 'iframe',
+            'height' : 250,
+            'width' : 300,
+            'params' : {}
+        };
+    `;
+
+    let adScript2 = document.createElement("script");
+    adScript2.type = "text/javascript";
+    adScript2.src = "//www.highperformanceformat.com/4c9b8144b1d68e87a8da4df06bcf9b9b/invoke.js";
+
+    adContainer.appendChild(adScript1);
+    adContainer.appendChild(adScript2);
+}
+
+document.body.appendChild(adContainer);
+
+function preloadNextVideos() {
+    for (let i = 1; i <= 3; i++) {
+        let nextIndex = currentIndex + i;
+        if (nextIndex < videoList.length) {
+            let video = document.createElement("video");
+            video.src = videoList[nextIndex];
+        }
+    }
+}
+
+function changeVideo(next = true) {
+    if (showingAd) {
+        skipAd();
+        return;
+    }
+
+    if (next) {
+        currentIndex = (currentIndex + 1) % videoList.length;
+    } else {
+        currentIndex = (currentIndex - 1 + videoList.length) % videoList.length;
+    }
+
+    videoCount++;
+
+    if (videoCount % 6 === 0) {
+        showAd();
+        return;
+    }
+
+    sourceElement.src = videoList[currentIndex];
+    videoElement.style.display = "block";
+    adContainer.style.display = "none";
+    videoElement.load();
+    preloadNextVideos();
+}
+
+function showAd() {
+    videoElement.style.display = "none";
+    adContainer.style.display = "flex";
+    showingAd = true;
+    loadAd(); // Load new ad each time
+}
+
+function skipAd() {
+    showingAd = false;
+    adContainer.style.display = "none";
+    changeVideo(true); // Continue to next video
+}
+
+document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowDown") {
+        changeVideo(true);
+    } else if (event.key === "ArrowUp") {
+        changeVideo(false);
+    } else if (event.key === " ") {
+        togglePlayPause();
+    }
+});
+
+videoElement.addEventListener("click", togglePlayPause);
+
+function togglePlayPause() {
+    if (videoElement.paused) {
+        videoElement.play();
+    } else {
+        videoElement.pause();
+    }
+}
+
+preloadNextVideos();
+</script>
+</body>
+</html>

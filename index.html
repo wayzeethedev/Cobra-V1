@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="/assets/css/global.css" rel="stylesheet">
+    <script src="/assets/js/global.js" type="module"></script>
+    <style>
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content img {
+            margin-top: calc(50vh - 35px);
+            height: 250px;
+            width: auto;
+            margin-left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            animation: fadeIn 3s forwards; /* Fade-in animation */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/">
+            <img src="/assets/images/logo.png">
+        </a>
+        <div class="nav-links" id="nav-links"></div>
+    </div>
+    <div class="content">
+        <img src="/assets/images/logo.png">
+    </div>
+</body>
+</html>

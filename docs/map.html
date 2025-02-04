@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="/assets/css/global.css" rel="stylesheet">
+    <script src="/assets/js/global.js" type="module"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-choropleth/0.0.7/leaflet-choropleth.js"></script>
+    <style>
+        /* Flexbox container for side-by-side layout */
+        .map-container {
+            display: flex;
+            align-items: flex-start; /* Align both the map and the text at the top */
+            margin-top: 100px; /* Same top margin as the map */
+        }
+
+        #map { 
+            height: 400px;
+            width: 600px;
+            max-width: 60%;
+            margin-left: 30px;
+            border-radius: 15px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        h2 {
+            font-size: 1.25em;
+            margin-left: 20px;
+        }
+        .first-place {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="/">
+            <img src="/assets/images/logo.png">
+        </a>
+        <div class="nav-links" id="nav-links"></div>
+    </div>   
+    <div class="map-container">
+        <div id="map"></div>
+        <div id="side-text">
+            <h1>Top Countries</h1>
+            <h2>1. United States</h2>
+            <h2>2. Brazil</h2>
+            <h2>3. India</h2>
+            <h2>4. Australia</h2>
+            <h2>5. Canada</h2>
+            <div class="first-place"></div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize the map with a global view and restrict movement within the world boundaries
+        const map = L.map('map', {
+            center: [90, 0], // Set the center at the middle top of the map
+            zoom: 1, // Set zoom level to 1
+            minZoom: 1, // Set minimum zoom level to 1
+            maxZoom: 10, // Optionally, set a maximum zoom level (you can adjust this as needed)
+            worldCopyJump: false, // Disable the continuous world (no wrapping around the globe)
+            maxBounds: [
+                [-90, -180],  // South-West corner (bottom left)
+                [90, 180]     // North-East corner (top right)
+            ], // This limits the map to the bounds of the world
+            maxBoundsViscosity: 1.0, // Keeps the map within the bounds, no scrolling past the edges
+            dragging: true, // Allow dragging (default behavior)
+            scrollWheelZoom: true // Disable zooming with the scroll wheel
+        });
+
+        // Add OpenStreetMap tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Normalize function to standardize country names for comparison
+        function normalizeCountryName(name) {
+            if (name === 'United States') return 'United States of America'; // Handle specific case
+            return name.toLowerCase().trim(); // Lowercase and trim spaces for standardization
+        }
+
+        // Fetch GeoJSON data for country borders
+        fetch('/assets/json/countries.geo.json')
+            .then(response => response.json())
+            .then(geoJsonData => {
+                // Fetch the dynamic JSON data from your URL
+                fetch('https://script.googleusercontent.com/macros/echo?user_content_key=eelOAfVjkcW0i499zdJCpyiVIMOr3aaY-P1jm5WTJyMa9byC5RagqxueveBv0LsguxD3gRvGQjm9is3g2t1WobZVKE-IP08Wm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnOwcqXaNhFpoZZFj1ClgDLCUoQgKWCewLJs0_OloDE9jAXwuofSGjTWDrwlMdYS2Av9m5VS7WzDW2Kky4t_Mz5w_BpWuITnG6g&lib=MmbAkbJzNzvWcNSLvew8eGVmvmH1sd9Lq')
+                    .then(response => response.json())
+                    .then(countryData => {
+                        // Create a map of country names to the data (for fast lookup)
+                        const countryDataMap = {};
+                        countryData.forEach(item => {
+                            countryDataMap[normalizeCountryName(item.Country)] = item;
+                        });
+
+                        // Add GeoJSON data to the map
+                        L.geoJSON(geoJsonData, {
+                            style: function(feature) {
+                                const countryName = normalizeCountryName(feature.properties.name);
+                                // If the country exists in the JSON, apply a specific style (blue)
+                                if (countryDataMap[countryName]) {
+                                    return {
+                                        fillColor: "#1266ab", // Blue color
+                                        weight: 1,
+                                        opacity: 1,
+                                        color: "#ffffff", // White borders
+                                        dashArray: "2",
+                                        fillOpacity: 1
+                                    };
+                                }
+                                // Otherwise, use a different color (light gray)
+                                return {
+                                    fillColor: "#f0f0f0", // Light gray for countries not in the data
+                                    weight: 1,
+                                    opacity: 1,
+                                    color: "#cccccc", // Light gray borders
+                                    dashArray: "3",
+                                    fillOpacity: 0.7
+                                };
+                            },
+                            onEachFeature: function(feature, layer) {
+                                const countryName = normalizeCountryName(feature.properties.name);
+                                const countryInfo = countryDataMap[countryName];
+
+                                if (countryInfo) {
+                                    // Create the tooltip content
+                                    const tooltipContent = `
+                                        <strong>${feature.properties.name}</strong><br>
+                                        Users: ${countryInfo["Total users"]}<br>
+                                        Views: ${countryInfo["Views"]}`;
+                                    
+                                    // Add tooltip on hover
+                                    layer.bindTooltip(tooltipContent, { permanent: false, sticky: true });
+                                }
+                            }
+                        }).addTo(map);
+                    })
+                    .catch(error => console.error('Error loading country data:', error));
+            })
+            .catch(error => console.error('Error loading GeoJSON data:', error));
+    </script>
+</body>
+</html>
