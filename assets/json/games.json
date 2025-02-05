@@ -21,7 +21,7 @@
         "description": "Doge Miner is an awesome incremental game featuring everyone’s favorite shibe inu pup. It is an idle game inspired by Cookie Clicker where the goal of the game is to click your way to the moon! 🚀",
         "image": "https://www.dolldivine.com/images/doge-coin-miner-game.png",
         "author": "rkn",
-        "iframeSrc": "/gs/doge-miner/index"
+        "iframeSrc": "/gs/doge-miner"
     },
     {
         "id": "drift-hunters",
