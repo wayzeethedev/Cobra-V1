@@ -45,8 +45,20 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
         }
-
-        // Function to adjust iframe dimensions dynamically
+    
+        async function setIframeSrc() {
+            const games = await fetchGameData();
+            const id = getQueryParam('id');
+            let defaultSrc = '/gs/error.html';
+    
+            // Find game by id
+            const game = games.find(game => game.id === id);
+            
+            // Set iframe src based on game data
+            const iframe = document.querySelector('iframe');
+            iframe.setAttribute('src', game ? game.iframeSrc : defaultSrc);
+        }
+    
         function adjustIframeSize() {
             const viewportHeight = window.innerHeight;
             const height = viewportHeight - 100;
@@ -55,23 +67,14 @@
             iframe.style.height = `${height}px`;
             iframe.style.width = `${width}px`;
         }
-
-        // Default fallback source
-        let defaultSrc = '/gs/error.html';
-
-        // Check if 'id' parameter exists and set iframe src accordingly
-        let id = getQueryParam('id');
-        let src = id ? `/gs/${id}.html` : defaultSrc;
-
-        // Set iframe src dynamically
-        window.onload = () => {
-            const iframe = document.querySelector('iframe');
-            iframe.setAttribute('src', src);
+    
+        // Execute on window load
+        window.onload = async () => {
+            await setIframeSrc();
             adjustIframeSize();
         };
-
-        // Adjust iframe size on window resize
+    
         window.onresize = adjustIframeSize;
-    </script>
+    </script>    
 </body>
 </html>
