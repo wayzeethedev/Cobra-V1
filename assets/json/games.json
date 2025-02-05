@@ -8,6 +8,14 @@
         "iframeSrc": "/gs/blackjack"
     },
     {
+        "id": "block-blast",
+        "title": "Block Blast",
+        "description": "If you enjoy puzzle games, Block Blast is the perfect challenge. This free block game combines strategic thinking with vibrant, colorful gameplay, offering a modern twist on the classic block puzzle. Whether you're looking to test your brain or just have some fun, Block Blast has something for everyone. Dive into a new world of block puzzles that’s designed for players like you who crave exciting puzzle adventures. Get ready to think, plan, and enjoy endless entertainment.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuc1QBsKJUs9W1gbucjH8eJA293qpMZtSsIw&s",
+        "author": "Hungry Studio",
+        "iframeSrc": "/gs/block-blast"
+    },
+    {
         "id": "cookie-clicker",
         "title": "Cookie Clicker",
         "description": "Cookie Clicker is an incremental web-browser game developed by Orteil. The goal of the game is to produce as many cookies (by clicking on the Big Cookie and buying buildings to produce them) as you can. There is no end to the game, but some believe getting all the achievements is technically seen as finishing the game.",
