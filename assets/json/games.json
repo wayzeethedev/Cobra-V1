@@ -1,5 +1,101 @@
 [
     {
+        "id": "2048",
+        "title": "2048",
+        "description": "2048 is an easy and fun puzzle game. Even if you don't love numbers you will love this classic game. It is played on a 4x4 grid using the arrows or W, A, S, D keys alternatively. Every time you press a key - all tiles slide. Tiles with the same value that bump into one-another are merged. Although there might be an optimal strategy to play, there is always some level of chance. If you beat the game and would like to master it, try to finish with a smaller score. That would mean that you finished with less moves.",
+        "image": "https://play-lh.googleusercontent.com/bZregCeEpzMwRoocLnsYb4Te-vPPHkW1k5H1xsQ3qK9yE00fixpWu5fNsUz3ut2IiDHn",
+        "author": "Gabrielle Cirulli",
+        "iframeSrc": "/gs/2048"
+    },
+    {
+        "id": "achievement-unlocked",
+        "title": "Achievement Unlocked",
+        "description": "Who needs gameplay when you have ACHIEVEMENTS? Don't worry about beating levels, finding ways to kill enemies, or beating the final boss... there are none. Focus solely on your ultimate destiny... doing random tasks that have nothing to do with anything. Metagame yourself with ease! Self-satisfaction never felt so... artificial!",
+        "image": "https://static.tvtropes.org/pmwiki/pub/images/psychotronic_achievementunlocked_title.png",
+        "author": "John Cooney",
+        "iframeSrc": "/gs/achievement-unlocked"
+    },
+    {
+        "id": "adventure-drivers",
+        "title": "Adventure Drivers",
+        "description": "Adventure Drivers is a car racing game where you try to finish in first among other racers. Are you ready for a driving adventure? Hop in your car and race through the tropics to finish first in this fierce racing game. Crush the competition to win trophies and pick up coins and points to unlock new cars and upgrades. Share the game with your friends and play it together to maximize the fun!",
+        "image": "https://lh3.googleusercontent.com/TqXC2c31CS65_Ib7fkgWnoI2j16OK6K4k1sejx_VKX3jDyRXX9jlenb6wrItqYaldhJ6p0eL9WdBNa7bGXIANAkeJw=s128-rj-sc0x00ffffff",
+        "author": "Domas Kazragis",
+        "iframeSrc": "/gs/adventure-drivers"
+    },
+    {
+        "id": "angry-sharks",
+        "title": "Angry Sharks",
+        "description": "Angry Shark is a side-scrolling swim-em-up in which players must attack swimmers and avoid aquatic hazards. Earn points by eating the helpless people who’ve picked the wrong day for a swim. To leap out of the water, build up some speed. The faster you come up, the higher you’ll jump! Time it right, and you’ll be able to clear speedboats, yachts and other hazards. Land on the boats to break them. The more stuff you manage to destroy, the more your blood-meter will fill up. Use the arrow keys to move the shark Press the space bar to perform a dash.",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/1a/26/0a/1a260a34-d4d8-0286-f0d7-e1d8fb42e35b/AppIcon-1x_U007emarketing-0-7-0-85-220-0.png/256x256bb.jpg",
+        "author": "Emrullah Can Demirpolat",
+        "iframeSrc": "/gs/angry-sharks"
+    },
+    {
+        "id": "aquapark",
+        "title": "Aquapark.io",
+        "description": "Reach to the end of the water slide, try to be the first. Bump other players during the race and have fun playing this colorful and sunny water slide game.",
+        "image": "https://www.jopi.com/cdn-cgi/image/quality=70,width=256,height=256,f=auto/img/t/aquapark.io.png",
+        "author": "Voodoo",
+        "iframeSrc": "/gs/aquapark-slides"
+    },
+    {
+        "id": "awesome-tanks-2",
+        "title": "Awesome Tanks 2",
+        "description": "Move your tank using the arrow keys or WASD. Aim and fire using your mouse. To complete each level, defeat enemy tanks, collect coins, and destroy the enemy base. Spend your money wisely on upgrades such as better armor, weapons, visibility, and more for your tank.",
+        "image": "https://www.speedrun.com/static/game/46w3vvl1/cover.png?v=a320414",
+        "author": "emittercritter",
+        "iframeSrc": "/gs/awesome-tanks-2"
+    },
+    {
+        "id": "backrooms",
+        "title": "The Backrooms",
+        "description": "'The Backrooms' is a psychological horror game based on the internet creepypasta of the same name, where players find themselves trapped in an endless maze of eerie, yellow-lit office spaces. The game creates an unsettling atmosphere with its monotonous yet disorienting hallways, flickering fluorescent lights, and the distant hum of an unseen presence. Players must navigate the liminal, dream-like environment while avoiding mysterious entities that lurk in the shadows, adding a constant sense of dread and paranoia. With each level introducing new dangers and oddities, The Backrooms immerses players in a surreal nightmare where escape feels impossible.",
+        "image": "https://styles.redditmedia.com/t5_6p207j/styles/communityIcon_r09tcqj19ab91.png",
+        "author": "Kane Parsons",
+        "iframeSrc": "/gs/backrooms"
+    },
+    {
+        "id": "baldis-basics",
+        "title": "Baldi's Basics",
+        "description": "Baldi's Basics in Education and Learning is a surreal horror game disguised as a retro-style educational adventure. Players must collect seven notebooks scattered throughout a strange school while solving simple yet increasingly tricky math problems. However, Baldi, the eerie and overly enthusiastic teacher, punishes mistakes by relentlessly chasing the player through the school’s unsettling, low-poly hallways. With quirky characters, unpredictable mechanics, and a growing sense of dread, the game blends nostalgia with horror in a bizarre and unnerving experience.",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqnZW-MCLECk4FceXImETBQhVGkKTSQ-aNdA&s",
+        "author": "Micah James McGonigal",
+        "iframeSrc": "/gs/baldis-basics"
+    },
+    {
+        "id": "basket-random",
+        "title": "Basket Random",
+        "description": "Basket Random is a wacky, physics-based basketball game where players control two ragdoll-like characters in chaotic, unpredictable matches. With just a single button to jump and shoot, gameplay is fast-paced and hilariously unpredictable, as characters flail and stumble in exaggerated movements. Each round features changing courts, ball types, and even gravity effects, keeping the action fresh and unpredictable. Whether playing solo or against a friend, Basket Random delivers endless laughs and unexpected moments with its absurd, over-the-top physics.",
+        "image": "https://www.jopi.com/cdn-cgi/image/quality=70,width=256,height=256,f=auto/img/t/basket-random.png",
+        "author": "RHM Interactive OÜ",
+        "iframeSrc": "/gs/basket-random"
+    },
+    {
+        "id": "basketball-stars",
+        "title": "Basketball Stars",
+        "description": "Basketball Stars is a 2-player basketball game created by Madpuffers. Shoot b-ball with the likes of LeBron James, James Harden, and Stephen Curry in Basketball Stars! You can play solo or with a friend as a variety of legendary basketball players.",
+        "image": "https://www.jopi.com/cdn-cgi/image/quality=70,width=256,height=256,f=auto/img/t/basketball-stars.png",
+        "author": "Madpuffers",
+        "iframeSrc": "/gs/basketball-stars"
+    },
+    {
+        "id": "basket-bros",
+        "title": "Basket Bros",
+        "description": "BasketBros is a fast-paced basketball game with online and offline gameplay. Choose a basketballer, customize your style, and compete in singleplayer and multiplayer games. Throw down some sick dunks and win the game to earn upgrades and unlockables.",
+        "image": "https://ovo-game.github.io/imgs/basket-bros.png",
+        "author": "Blue Wizard Digital",
+        "iframeSrc": "/gs/basketbros-io"
+    },
+    {
+        "id": "bitlife",
+        "title": "BitLife",
+        "description": "Get ready for a rebirth and redo your life with your own decisions in Bitlife! This simulated journey will take you to an experience that cannot be found anywhere else. Start a new life in a realistic and vivid virtual world. In this simulation game, you will have full authority to choose the turns in a stranger's life, and this character is you in the game. Feel the thrill of making important decisions, from choosing a career to building relationships and managing personal finances. Each choice you make will directly affect your character's life, creating unexpected results and even memorable moments. Or if you want to challenge yourself even more, you can play the role of a father or mother, adopt a child and take care of this baby from its first steps. From teaching and caring to deciding your child's future, everything is in your hands. Challenge your management abilities and responsibilities as a parent. Bitlife is waiting for you with untold stories and life-shaping decisions!",
+        "image": "https://static.tvtropes.org/pmwiki/pub/images/unnamed_480.png",
+        "author": "CandyWriter LLC",
+        "iframeSrc": "/gs/bitlife"
+    },
+    {
         "id": "blackjack",
         "title": "BlackJack",
         "description": "Blackjack, also known as twenty-one, is by far the most popular casino card game. Despite its simple rules, it boasts high winning chances and a great deal of excitement. BGaming presents its own version of this classic card game. The subtle tones, smooth card, chip animations, and relaxing music make the go-to card game for all blackjack aficionados. Make sure to experience it right now!",
@@ -14,6 +110,46 @@
         "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuc1QBsKJUs9W1gbucjH8eJA293qpMZtSsIw&s",
         "author": "Hungry Studio",
         "iframeSrc": "/gs/block-blast"
+    },
+    {
+        "id": "bloons-td",
+        "title": "Bloons TD",
+        "description": "Bloons Tower Defense is a casual game where your mission is to build and fortify your defenses to stop an ever-growing wave of colorful balloons from reaching the end of the track. This classic game started the legendary Bloons TD series and continues some of the gameplay. You must strategically place a wide variety of units, from dart-throwing monkeys to powerful turrets, and enhance them with upgrades to maximize your popping power. As the levels progress, so do the challenges.",
+        "image": "https://play-lh.googleusercontent.com/4te8y2It_nyY4yX5jcSEFaTDro98302l9EnSbkJyCobGUo8GWxteV_8kJ8nlXyStxw=s256-rw",
+        "author": "Ninja Kiwi",
+        "iframeSrc": "/gs/bloons-td"
+    },
+    {
+        "id": "bloons-td-2",
+        "title": "Bloons TD 2",
+        "description": "Bloons Tower Defense 2 is a popular tower defense game originally released in Flash by Ninja Kiwi. Strategically place your defenses, upgrade your units, and stop all balloons from passing through.",
+        "image": "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/b0/74/40/b0744074-b6c3-dcee-feb4-4a2615daf675/AppIcon-0-0-1x_U007emarketing-0-6-85-220.png/256x256bb.jpg",
+        "author": "Ninja Kiwi",
+        "iframeSrc": "/gs/bloons-td-2"
+    },
+    {
+        "id": "bloxorz",
+        "title": "Bloxorz",
+        "description": "Bloxorz is an intriguing puzzle game in which you have to move a cylindrical block to reach the red destination by rolling the block on the platforms.",
+        "image": "https://lh3.googleusercontent.com/4V-iQbOZ99hsCVnAKds7931oglWYvG3pMHMblQOZnxU3zB29T2mz9pHg87PO2I21dcoHL001mdyq3nMytptLe4_knA=s128-rj-sc0x00ffffff",
+        "author": "Damien Clarke / Frank Buss",
+        "iframeSrc": "/gs/bloxors"
+    },
+    {
+        "id": "bob-the-robber-2",
+        "title": "Bob the Robber 2",
+        "description": "Join an unexpected adventure in Bob the Robber 2! Whoever said all burglars are bad clearly hasnt met Bob. The city is in danger and it seems like all the other heroes are busy dealing with other things. It falls to Bob to sort matters out this time. Help the local thief to save the city in this stealthy thieving adventure! Cloak and dagger time!",
+        "image": "https://gameforge.com/de-DE/littlegames/includes/images/games/9468_5eb3ef7732ef0.jpg",
+        "author": "Meow Beast",
+        "iframeSrc": "/gs/bob-the-robber-2"
+    },
+    {
+        "id": "breaking-the-bank",
+        "title": "Breaking the Bank",
+        "description": "Breaking the Bank is the first installment of the popular Henry Stickmin game series. Help Henry Stickmin break into a bank that's situated in the middle of a desert. Choose one of the risky decisions and watch as the rest of the story unfolds. You can dig tunnels, use explosives, drill with lasers, demolish with wrecking balls, use a teleporter or even a disguise! Make sure to play Breaking the Bank multiple times to get all the endings.",
+        "image": "https://img.poki-cdn.com/cdn-cgi/image/quality=78,width=314,height=314,fit=cover,f=auto/0f80f3388aabb6153981b749df08c7fc6048d5234a40e9e88d7afc73178b451e.png",
+        "author": "PuffballsUnited",
+        "iframeSrc": "/gs/breaking-the-bank"
     },
     {
         "id": "cookie-clicker",
@@ -78,14 +214,6 @@
         "image": "https://slopeonline.online/upload/imgs/options/slope-game-logo.png",
         "author": "Rob Kay",
         "iframeSrc": "/gs/slope"
-    },
-    {
-        "id": "",
-        "title": "",
-        "description": "",
-        "image": "",
-        "author": "",
-        "iframeSrc": "/gs/"
     }
   ]
   
