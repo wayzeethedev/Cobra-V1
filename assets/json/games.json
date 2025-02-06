@@ -32,14 +32,6 @@
         "iframeSrc": "/gs/angry-sharks"
     },
     {
-        "id": "aquapark",
-        "title": "Aquapark.io",
-        "description": "Reach to the end of the water slide, try to be the first. Bump other players during the race and have fun playing this colorful and sunny water slide game.",
-        "image": "https://www.jopi.com/cdn-cgi/image/quality=70,width=256,height=256,f=auto/img/t/aquapark.io.png",
-        "author": "Voodoo",
-        "iframeSrc": "/gs/aquapark-slides"
-    },
-    {
         "id": "awesome-tanks-2",
         "title": "Awesome Tanks 2",
         "description": "Move your tank using the arrow keys or WASD. Aim and fire using your mouse. To complete each level, defeat enemy tanks, collect coins, and destroy the enemy base. Spend your money wisely on upgrades such as better armor, weapons, visibility, and more for your tank.",
