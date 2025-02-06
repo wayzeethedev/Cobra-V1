@@ -1,4 +1,146 @@
-<!DOCTYPE html>
+```javascript
+// Improved code for handling ads and game instance
+const adConfig = {
+  smallScreen: {
+    id: "adRectangleBottom",
+    moduleId: "POOL 83023",
+    config: {
+      conditions: {
+        target: {
+          el: null,
+          kind: "replace",
+        },
+      },
+    },
+  },
+  largeScreen: {
+    id: "adLeaderboardBottom",
+    moduleId: "POOL 85420",
+    config: {
+      conditions: {
+        target: {
+          el: null,
+          kind: "replace",
+        },
+      },
+    },
+  },
+  upperAd: {
+    id: "adRectangleUpper",
+    moduleId: "POOL 83025",
+    config: {
+      conditions: {
+        target: {
+          el: null,
+          kind: "replace",
+        },
+      },
+    },
+  },
+};
+
+let gameInstance;
+let adsVisible = false;
+let timeSinceRefresh = 0;
+let timeAdsVisible = 0;
+let counter;
+
+function injectAdByWindowSize() {
+  const smallScreenAd = document.getElementById(adConfig.smallScreen.id);
+  const largeScreenAd = document.getElementById(adConfig.largeScreen.id);
+
+  if (window.innerHeight < 900) {
+    if (!smallScreenAd) {
+      const el = document.getElementsByClassName("ad-rectangle-bottom")[0];
+      el.id = adConfig.smallScreen.id;
+      cpmstarAPI({ kind: "go", module: adConfig.smallScreen.moduleId, config: adConfig.smallScreen.config });
+    }
+  } else {
+    if (!largeScreenAd) {
+      const el = document.getElementsByClassName("ad-leaderboard-bottom")[0];
+      el.id = adConfig.largeScreen.id;
+      cpmstarAPI({ kind: "go", module: adConfig.largeScreen.moduleId, config: adConfig.largeScreen.config });
+    }
+  }
+}
+
+function showAds() {
+  document.getElementsByClassName("ad-rectangle-bottom")[0].style.display = "block";
+  document.getElementsByClassName("ad-leaderboard-bottom")[0].style.display = "block";
+  document.getElementById(adConfig.upperAd.id).style.display = "block";
+
+  if (typeof counter === "undefined") {
+    startCounter();
+    resumeCounter();
+  } else {
+    resumeCounter();
+    refresh();
+  }
+}
+
+function hideAds() {
+  document.getElementsByClassName("ad-rectangle-bottom")[0].style.display = "none";
+  document.getElementsByClassName("ad-leaderboard-bottom")[0].style.display = "none";
+  document.getElementById(adConfig.upperAd.id).style.display = "none";
+
+  pauseCounter();
+}
+
+function refresh() {
+  if (timeSinceRefresh <= 30 || timeAdsVisible <= 2) {
+    return;
+  }
+
+  if (document.getElementById(adConfig.smallScreen.id) && window.getComputedStyle(document.getElementsByClassName("ad-smallscreen")[0]).display !== "none") {
+    cpmstarAPI({ kind: "adcmd", module: adConfig.smallScreen.moduleId, command: "refresh" });
+  }
+
+  if (document.getElementById(adConfig.largeScreen.id) && window.getComputedStyle(document.getElementsByClassName("ad-largescreen")[0]).display !== "none") {
+    cpmstarAPI({ kind: "adcmd", module: adConfig.largeScreen.moduleId, command: "refresh" });
+  }
+
+  cpmstarAPI({ kind: "adcmd", module: adConfig.upperAd.moduleId, command: "refresh" });
+
+  timeSinceRefresh = 0;
+  timeAdsVisible = 0;
+}
+
+function startCounter() {
+  timeSinceRefresh++;
+  if (adsVisible) timeAdsVisible++;
+
+  counter = setTimeout(function () {
+    startCounter();
+  }, 1000);
+}
+
+function resumeCounter() {
+  adsVisible = true;
+}
+
+function pauseCounter() {
+  adsVisible = false;
+}
+
+// Initialize game instance and ads
+gameInstance = UnityLoader.instantiate("gameContainer", "Build/WebGL.json", { onProgress: UnityProgress });
+window.unityInstance = gameInstance;
+
+injectAdByWindowSize();
+
+// Hide ads initially
+hideAds();
+
+// Add event listeners
+window.addEventListener("resize", injectAdByWindowSize);
+window.onfocus = function () {
+  resumeCounter();
+  refresh();
+};
+window.onblur = function () {
+  pauseCounter();
+};
+```<!DOCTYPE html>
 <html lang="en-us">
 
 <head>
